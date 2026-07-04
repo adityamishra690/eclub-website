@@ -1,0 +1,54 @@
+{
+  "Roadmaps": [
+    {
+      "FolderName": "Computer Vision",
+      "Description": "Start your journey into computer vision with essential concepts and tools.",
+      "Files": [
+        {
+          "DisplayName": "View PDF",
+          "Link": "/roadmaps/CV.pdf"
+        }
+      ]
+    },
+    {
+      "FolderName": "Signal Processing & ML",
+      "Description": "Learn signal processing foundations and machine learning applications.",
+      "Files": [
+        {
+          "DisplayName": "View PDF",
+          "Link": "https://colab.research.google.com/drive/11KzptCYo0aLdZW70nO2qO9vaYUYzEsak?usp=sharing"
+        }
+      ]
+    },
+    {
+      "FolderName": "FPGA",
+      "Description": "A beginner-friendly roadmap for FPGA design and applications.",
+      "Files": [
+        {
+          "DisplayName": "View PDF",
+          "Link": "/roadmaps/FPGA.pdf"
+        }
+      ]
+    },
+    {
+      "FolderName": "Internet of Things",
+      "Description": "Build and connect smart devices using IoT protocols and platforms.",
+      "Files": [
+        {
+          "DisplayName": "View PDF",
+          "Link": "/roadmaps/IoT.pdf"
+        }
+      ]
+    },
+    {
+      "FolderName": "PCB Designing",
+      "Description": "Design your own printed circuit boards using modern EDA tools.",
+      "Files": [
+        {
+          "DisplayName": "View PDF",
+          "Link": "/roadmaps/PCB2.pdf"
+        }
+      ]
+    }
+  ]
+}

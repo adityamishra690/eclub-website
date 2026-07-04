@@ -1,0 +1,123 @@
+.challenge-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: 60px;
+}
+
+.challenge-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/public/challenge-bg.avif');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.challenge-content {
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 15px;
+  position: relative;
+  margin: 80px auto;
+  text-align: center;
+  color: rgb(191, 255, 0);
+  padding: 40px 48px;
+  max-width: 900px;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+/* Headings */
+.challenge-h1,
+.challenge-h2,
+.challenge-h3 {
+  color: white;
+  text-align: left;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+.challenge-h1 {
+  font-size: 2.5em;
+}
+.challenge-h2 {
+  font-size: 2em;
+}
+.challenge-h3 {
+  font-size: 1.5em;
+}
+
+/* Paragraphs */
+.challenge-description {
+  font-size: 1.2em;
+  color: white;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  text-align: justify;
+}
+
+/* Lists */
+.challenge-list {
+  margin-left: 20px;
+  padding-left: 20px;
+  color: white;
+  text-align: left;
+}
+.challenge-list-item {
+  margin-bottom: 8px;
+}
+
+/* Links */
+.challenge-link {
+  color: #BBDF4D;
+  text-decoration: underline;
+}
+
+/* Inline code */
+.challenge-inline-code {
+  background-color: #333;
+  color: #ffeb3b;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95em;
+}
+
+/* Blockquotes */
+.challenge-quote {
+  border-left: 4px solid #BBDF4D;
+  padding-left: 1em;
+  margin: 1em 0;
+  color: white;
+  font-style: italic;
+  text-align: left;
+}
+
+/* Horizontal Rule */
+.challenge-divider {
+  border: none;
+  height: 2px;
+  background: #BBDF4D;
+  margin: 2em 0;
+}
+
+/* Final link button */
+.challenge-content a {
+  display: inline-block;
+  margin-top: 25px;
+  font-size: 1.1em;
+  color: #BBDF4D;
+  text-decoration: none;
+  border: 1px solid #BBDF4D;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.challenge-content a:hover {
+  background-color: #BBDF4D;
+  color: black;
+}

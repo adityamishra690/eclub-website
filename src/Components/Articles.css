@@ -1,0 +1,146 @@
+/* Articles.css */
+
+/* Removed 'body' selector to prevent navbar squashing */
+.article-page-container {
+  background: #000000;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column; /* Changed to column to stack heading and cards naturally */
+  align-items: center;
+  justify-content: flex-start; /* Prevents vertical 'squeezing' */
+  margin: 0;
+  padding: 0;
+  color: #BBDF4D;
+  font-family: 'Lato', sans-serif;
+  min-height: 100vh; /* Ensures the black background covers the whole screen */
+}
+
+.article-heading {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 4rem;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #BBDF4D;
+}
+
+.article-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  width: 100%; /* Ensures it spans the full width of the container */
+}
+
+.article-card {
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  margin: 15px;
+  padding: 20px;
+  text-align: center;
+  flex-basis: calc(33.333% - 30px);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+  transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.article-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.article-card h1 {
+  font-family: 'Righteous', sans-serif;
+  font-size: 1.6rem;
+  margin-top: 12px;
+  margin-bottom: 10px;
+  color: #BBDF4D;
+}
+
+.article-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  color: #ddd;
+}
+
+.article-card .readBtn {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #BBDF4D;
+  border: 1px solid #BBDF4D;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.article-card:hover {
+  background-color: #BBDF4D;
+  color: rgba(17, 25, 40, 0.85);
+  transform: translateY(-12px);
+}
+
+.article-card:hover h1 {
+  color: rgba(17, 25, 40, 0.85);
+}
+
+.article-card:hover .readBtn {
+  background-color: #BBDF4D;
+  color: rgba(17, 25, 40, 0.85);
+  border: 1px solid rgba(17, 25, 40, 0.85);
+}
+
+/* Tabs for years (Archive Navigation) */
+.article-tabs {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 12px;
+  gap: 10px;
+}
+
+.article-tabs button {
+  background-color: rgba(17, 25, 40, 0.75);
+  color: #BBDF4D;
+  font-size: 1rem;
+  border: 1px solid #BBDF4D;
+  padding: 10px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.article-tabs button:hover {
+  background-color: #BBDF4D;
+  color: rgba(17, 25, 40, 0.75);
+  border: 1px solid rgba(17, 25, 40, 0.75);
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .article-card {
+    flex-basis: calc(50% - 30px);
+  }
+}
+
+@media (max-width: 767px) {
+  .article-card {
+    flex-basis: calc(100% - 30px);
+  }
+
+  .article-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .article-tabs button {
+    font-size: 1rem;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+  }
+}

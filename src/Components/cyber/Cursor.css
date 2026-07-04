@@ -1,0 +1,114 @@
+/* ==================================================================
+   NEURAL_BUILD // OS — custom neon cursor + magnetic wrapper
+   Two fixed layers: a lime DOT that pins to the pointer and a cyan
+   RING that lags via rAF lerp. Compositor-only (transform/opacity).
+   ================================================================== */
+
+/* Hide the native cursor ONLY while the custom one is live (fine pointer).
+   Scoped by .has-cursor so touch / coarse devices keep their real cursor. */
+.has-cursor,
+.has-cursor * {
+  cursor: none !important;
+}
+
+/* Shared layer chrome */
+.cur-dot,
+.cur-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  /* transform is written inline every frame; only fade opacity here */
+  transition: opacity var(--dur-2, 200ms) var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+  will-change: transform, opacity;
+  /* start centered on our own origin so translate(-50%,-50%) lands true */
+  transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+}
+
+/* fade in once the pointer has produced a real position */
+.cur-dot.cur--on,
+.cur-ring.cur--on {
+  opacity: 1;
+}
+
+/* ---- the DOT: small, lime, pinned exactly to the pointer ---- */
+.cur-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime, #bbdf4d);
+  box-shadow: var(--glow-lime-sm, 0 0 12px rgba(187, 223, 77, 0.45));
+}
+
+/* ---- the RING: larger, cyan, lags behind via lerp ---- */
+.cur-ring {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--cyan, #3df2ff);
+  box-shadow: var(--glow-cyan-sm, 0 0 12px rgba(61, 242, 255, 0.6));
+  /* animate size/color independently of the per-frame transform */
+  transition:
+    opacity var(--dur-2, 200ms) var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+    width var(--dur-2, 200ms) var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+    height var(--dur-2, 200ms) var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+    border-color var(--dur-2, 200ms) var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+    background-color var(--dur-2, 200ms) var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+    box-shadow var(--dur-2, 200ms) var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+/* over an interactive element: bloom ~1.8x + invert to lime */
+.cur-ring--active {
+  width: 68px;
+  height: 68px;
+  border-color: var(--lime, #bbdf4d);
+  background: rgba(187, 223, 77, 0.1);
+  box-shadow: var(--glow-lime-md, 0 0 22px rgba(187, 223, 77, 0.45));
+}
+
+/* subtle press feedback */
+.cur-ring--down {
+  width: 26px;
+  height: 26px;
+}
+.cur-ring--active.cur-ring--down {
+  width: 58px;
+  height: 58px;
+}
+
+/* ================================================================== */
+/*  Magnetic wrapper                                                  */
+/* ================================================================== */
+
+/* Inline element that must not disturb the layout of its child link/button.
+   No transition here — easing is driven per-frame by rAF in JS. */
+.mag {
+  display: inline-block;
+}
+.mag--live {
+  will-change: transform;
+}
+
+/* ================================================================== */
+/*  Reduced motion — keep the cursor, drop the easing/press flourish  */
+/* ================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  /* fade only — no eased size/color/transform on the ring */
+  .cur-dot,
+  .cur-ring {
+    transition: opacity var(--dur-1, 150ms) linear;
+  }
+  /* keep the hover bloom (it aids affordance) but drop the press-scale jump */
+  .cur-ring--down {
+    width: 38px;
+    height: 38px;
+  }
+  .cur-ring--active,
+  .cur-ring--active.cur-ring--down {
+    width: 68px;
+    height: 68px;
+  }
+}

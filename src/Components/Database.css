@@ -1,0 +1,254 @@
+/* ==================================================================
+   DATABASE — Electronics Club, IIT Kanpur
+   Same cyber/HUD language as the homepage: CircuitBG constellation,
+   perspective grid, scanlines, vignette, RGB-split glitch title.
+   Uses the global design tokens defined in src/index.css.
+   ================================================================== */
+
+.db-root {
+  position: relative;
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+.db-root *,
+.db-root *::before,
+.db-root *::after {
+  box-sizing: border-box;
+}
+
+/* ============================ HERO ============================ */
+.db-hero {
+  position: relative;
+  z-index: 1;
+  min-height: 62vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  padding: 90px 20px 70px;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(187, 223, 77, 0.08), transparent 60%),
+    radial-gradient(80% 60% at 50% 100%, rgba(61, 242, 255, 0.08), transparent 60%),
+    var(--bg-0);
+}
+
+/* the animated PCB trace canvas (CircuitTraceBG) now lives in this
+   layer instead of the old static database.jpeg pan/zoom — see
+   src/Components/cyber/CircuitTraceBG.js */
+
+/* moving perspective grid, identical rhythm to the homepage hero */
+.db-grid-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(circle at 50% 50%, black 10%, transparent 78%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 10%, transparent 78%);
+  animation: db-grid-move 12s linear infinite;
+  pointer-events: none;
+}
+@keyframes db-grid-move {
+  to { background-position: 46px 46px; }
+}
+
+.db-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.22) 3px,
+    rgba(0, 0, 0, 0) 4px
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.db-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: var(--vignette-inset);
+}
+
+/* HUD corner labels */
+.db-hud {
+  position: absolute;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: rgba(187, 223, 77, 0.65);
+  pointer-events: none;
+}
+.db-hud-tl { top: 18px; left: 20px; }
+.db-hud-tr { top: 18px; right: 20px; }
+
+.db-hero-content {
+  position: relative;
+  z-index: 4;
+  max-width: 720px;
+}
+
+.db-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.5em;
+  color: var(--cyan);
+  margin: 0 0 18px;
+  opacity: 0.9;
+}
+
+.db-title {
+  font-size: clamp(2.4rem, 8vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  margin: 0;
+  color: #fff;
+  position: relative;
+  text-shadow: 0 0 40px rgba(187, 223, 77, 0.35);
+}
+.db-title::before,
+.db-title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 0 0);
+}
+.db-title::before {
+  color: var(--cyan);
+  animation: db-glitch-a 3.5s infinite steps(2);
+  mix-blend-mode: screen;
+}
+.db-title::after {
+  color: var(--lime);
+  animation: db-glitch-b 3.5s infinite steps(2);
+  mix-blend-mode: screen;
+}
+@keyframes db-glitch-a {
+  0%, 92%, 100% { transform: translate(0); opacity: 0; }
+  93% { transform: translate(-3px, 1px); opacity: 0.7; }
+  95% { transform: translate(2px, -1px); opacity: 0.7; }
+  97% { transform: translate(-2px, 0); opacity: 0; }
+}
+@keyframes db-glitch-b {
+  0%, 90%, 100% { transform: translate(0); opacity: 0; }
+  91% { transform: translate(3px, -1px); opacity: 0.6; }
+  94% { transform: translate(-2px, 1px); opacity: 0.6; }
+  96% { transform: translate(1px, 0); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .db-title::before, .db-title::after { animation: none; opacity: 0; }
+}
+
+.db-tagline {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0 26px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 2vw, 0.95rem);
+  letter-spacing: 0.35em;
+  color: var(--muted, var(--text-muted));
+}
+.db-dot { color: var(--lime); }
+
+.db-sub {
+  margin: 0 auto;
+  max-width: 560px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+.db-link {
+  color: var(--lime);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(187, 223, 77, 0.4);
+  transition: color var(--t-hover), border-color var(--t-hover);
+}
+.db-link:hover {
+  color: var(--lime-bright);
+  border-color: var(--lime-bright);
+}
+
+/* scroll cue */
+.db-scroll-cue {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.db-scroll-cue span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  color: var(--muted, var(--text-muted));
+}
+.db-scroll-track {
+  width: 2px;
+  height: 30px;
+  background: var(--line-strong);
+  position: relative;
+  overflow: hidden;
+}
+.db-scroll-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 10px;
+  background: var(--lime);
+  animation: db-scroll-drop 1.8s ease-in-out infinite;
+}
+@keyframes db-scroll-drop {
+  0% { top: -10px; opacity: 0; }
+  30% { opacity: 1; }
+  100% { top: 30px; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .db-scroll-dot { animation: none; top: 10px; opacity: 1; }
+}
+
+/* ============================ BODY ============================ */
+/* masked "cut in" reveal — clips the rising content, small padding
+   keeps glow/descenders intact. Same recipe as the homepage's Reveal. */
+.db-cut {
+  overflow: clip;
+  padding: 8px 6px;
+  margin: -8px -6px;
+}
+
+/* transparent so the CircuitBG constellation keeps drifting behind
+   the card list, same as it does on the homepage */
+.db-body {
+  position: relative;
+  z-index: 1;
+  padding: var(--section-y) var(--gutter) 60px;
+}
+
+@media (max-width: 640px) {
+  .db-hero { min-height: 54vh; padding: 70px 16px 56px; }
+  .db-hud { display: none; }
+}

@@ -1,0 +1,399 @@
+/* =========================
+   BASE CYBER FOOTER
+========================= */
+.footer-cyber {
+  position: relative;
+  margin-top: 60px;
+  padding: 70px 20px 20px;
+
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(20px);
+
+  color: var(--lime);
+
+  /* Removed conflicting overflow: hidden — was fighting with overflow: visible below.
+     Keeping visible so hover card lift-effects aren't clipped. */
+  overflow: visible;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+
+  border-top: 1px solid var(--line-strong);
+}
+
+.footer-cyber.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   NEON CORE
+========================= */
+.neon-core {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(187, 223, 77, 0.25),
+    transparent 70%
+  );
+
+  animation: pulse 3s infinite ease-in-out;
+  filter: blur(20px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.4; }
+  50%       { transform: translate(-50%, -50%) scale(1.4); opacity: 0.8; }
+}
+
+/* =========================
+   GRID BACKGROUND
+========================= */
+.footer-grid-overlay {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(187, 223, 77, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(187, 223, 77, 0.08) 1px, transparent 1px);
+
+  background-size: 45px 45px;
+  animation: gridMove 12s linear infinite;
+
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(45px); }
+}
+
+/* =========================
+   SOCIAL DOCK
+========================= */
+.social-dock {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 25px;
+  z-index: 2;
+  overflow: visible;
+}
+
+.social-dock a {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+
+  color: var(--lime);
+  background: rgba(0, 0, 0, 0.4);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.social-dock a:hover {
+  transform: translateY(-4px) scale(1.15);
+  box-shadow: var(--glow-lime-md);
+  color: var(--lime-bright);
+  z-index: 10;
+}
+
+/* Visible keyboard focus for accessibility */
+.social-dock a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* =========================
+   MAIN GRID
+========================= */
+.footer-main {
+  position: relative;
+  z-index: 2;
+  overflow: visible;   /* was set hidden mid-file then overridden — set once here */
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: stretch;   /* all cards fill row height so terminal aligns with siblings */
+  gap: 25px;
+}
+
+/* =========================
+   CARDS (UNIFIED)
+========================= */
+.footer-card {
+  padding: 18px;
+  border-radius: 14px;
+  position: relative;
+  z-index: 1;
+  transform: translateZ(0);
+  will-change: transform;
+
+  background: var(--surface-glass);
+  border: 1px solid var(--line);
+
+  backdrop-filter: blur(12px);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.footer-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--line-strong);
+  box-shadow: var(--glow-lime-sm);
+  z-index: 10;
+}
+
+/* =========================
+   TERMINAL
+========================= */
+.terminal {
+  display: flex;
+  flex-direction: column;
+
+  /* min-height instead of a fixed height: the grid stretches all cards to the
+     tallest, and the terminal establishes a sensible floor while staying scrollable */
+  min-height: 240px;
+
+  overflow: hidden;
+  border-radius: 14px;
+  padding: 0;
+
+  background: var(--bg-term);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px;
+  background: var(--bg-term-bar);
+  border-bottom: 1px solid var(--line);
+
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.red    { background: var(--dot-red); }
+.yellow { background: var(--dot-yellow); }
+.green  { background: var(--dot-green); }
+
+.terminal-title {
+  margin-left: 10px;
+  font-size: 12px;
+  opacity: 0.7;
+  font-family: var(--font-mono);
+  color: var(--lime);
+}
+
+.terminal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  font-family: var(--font-mono);
+  cursor: text;
+
+  /* Removed typingGlow — it faded the entire body including the input,
+     hurting readability. Glow effect is preserved on glitch-text lines only. */
+}
+
+/* Accessible focus indication when the input (or the body itself) has focus */
+.terminal-body:focus-within,
+.terminal-body:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Styled scrollbar */
+.terminal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 10px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* =========================
+   TERMINAL INPUT
+========================= */
+.input-line {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  color: var(--lime);
+}
+
+.input-line input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--lime);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  width: 100%;
+  caret-color: var(--lime);
+}
+
+.input-line input::placeholder {
+  color: rgba(187, 223, 77, 0.4);
+  font-style: italic;
+}
+
+/* iOS auto-zooms any input < 16px on focus. Bump to 16px on coarse pointers
+   (touch) only; keep the tighter 13px on fine pointers (desktop). */
+@media (pointer: coarse) {
+  .input-line input {
+    font-size: 16px;
+  }
+}
+
+/* =========================
+   TEXT EFFECTS
+========================= */
+.terminal-body p {
+  margin: 0;
+  color: var(--lime);
+}
+
+.glitch-text {
+  animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.85; text-shadow: 0 0 5px rgba(187, 223, 77, 0.2); }
+  100% { opacity: 1; }
+}
+
+/* =========================
+   LINKS
+========================= */
+.footer-card h4 {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  color: var(--cyan);
+  margin: 0 0 10px;
+}
+
+.footer-card a {
+  display: block;
+  margin: 6px 0;
+  color: var(--lime);
+  text-decoration: none;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.footer-card a:hover {
+  color: var(--lime-bright);
+  padding-left: 5px;
+}
+
+.footer-card a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--r-xs);
+}
+
+/* =========================
+   BOTTOM BAR
+========================= */
+.footer-bottom {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 15px;
+
+  border-top: 1px solid var(--line-strong);
+  font-size: 13px;
+  opacity: 0.85;
+  color: var(--text-dim);
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+@media (prefers-reduced-motion: reduce) {
+  .footer-cyber {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .neon-core,
+  .footer-grid-overlay {
+    animation: none;
+  }
+
+  .glitch-text {
+    animation: none;
+  }
+
+  .footer-card:hover,
+  .social-dock a:hover {
+    transform: none;
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .footer-cyber {
+    padding: 50px 16px 16px;
+  }
+
+  .social-dock {
+    margin-bottom: 18px;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .terminal {
+    min-height: 200px;
+  }
+
+  .footer-bottom {
+    margin-top: 18px;
+    padding-top: 14px;
+  }
+}

@@ -1,0 +1,237 @@
+/* ==================================================================
+   BootSequence — first-load boot overlay (NEURAL_BUILD // OS)
+   Sits ABOVE the navbar. Compositor-only animation (transform/opacity),
+   tokens from :root only. No horizontal overflow.
+   ================================================================== */
+
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* curtain starts fully covering the viewport */
+  clip-path: inset(0 0 0 0);
+  will-change: clip-path, opacity;
+}
+
+/* curtain-up wipe: reveal from the bottom, cutting to nothing at the top */
+.boot--wipe {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--dur-5, 500ms) var(--ease-out);
+}
+
+/* reduced-motion path: plain fade, no movement */
+.boot--fade {
+  opacity: 0;
+  transition: opacity 400ms linear;
+}
+
+/* ---- animated perspective grid backdrop ---- */
+.boot__grid {
+  position: absolute;
+  inset: -2px;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 46px 46px;
+  animation: boot-grid 5s linear infinite;
+  opacity: 0.7;
+  pointer-events: none;
+}
+@keyframes boot-grid {
+  to { background-position: 46px 46px; }
+}
+
+/* ---- scanline sheen ---- */
+.boot__scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.22) 3px,
+    rgba(0, 0, 0, 0) 4px
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* ---- corner-bracket reticle ---- */
+.boot__bracket {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--line-cyan);
+  pointer-events: none;
+  opacity: 0.85;
+}
+.boot__bracket--tl {
+  top: 18px; left: 18px;
+  border-right: none; border-bottom: none;
+}
+.boot__bracket--tr {
+  top: 18px; right: 18px;
+  border-left: none; border-bottom: none;
+}
+.boot__bracket--bl {
+  bottom: 18px; left: 18px;
+  border-right: none; border-top: none;
+}
+.boot__bracket--br {
+  bottom: 18px; right: 18px;
+  border-left: none; border-top: none;
+}
+
+/* ---- terminal stage ---- */
+.boot__stage {
+  position: relative;
+  z-index: 2;
+  width: min(92vw, 560px);
+  background: var(--bg-term);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-terminal), var(--glow-cyan-md);
+  overflow: hidden;
+  animation: boot-stage-in var(--dur-5, 450ms) var(--ease-out) both;
+}
+@keyframes boot-stage-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* terminal title bar */
+.boot__head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--bg-term-bar);
+  border-bottom: 1px solid var(--line);
+}
+.boot__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.boot__dot--r { background: var(--dot-red); }
+.boot__dot--y { background: var(--dot-yellow); }
+.boot__dot--g { background: var(--dot-green); }
+.boot__headlabel {
+  margin-left: 10px;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* typed lines */
+.boot__term {
+  padding: 22px 22px 8px;
+  min-height: 168px;
+  font-size: clamp(0.82rem, 2.6vw, 0.95rem);
+  line-height: 1.9;
+}
+.boot__line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.boot__line--dim .boot__text { color: var(--text-dim); }
+.boot__line--hero {
+  margin-top: 10px;
+}
+.boot__line--hero .boot__text {
+  color: var(--lime-bright);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-shadow: var(--text-glow-lime);
+}
+
+/* blinking cyan caret */
+.boot__caret {
+  display: inline-block;
+  width: 9px;
+  height: 1.05em;
+  transform: translateY(2px);
+  background: var(--cyan);
+  box-shadow: var(--glow-cyan-sm);
+  animation: boot-blink 1s steps(1) infinite;
+}
+@keyframes boot-blink {
+  50% { opacity: 0; }
+}
+
+/* progress bar */
+.boot__progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px 20px;
+}
+.boot__track {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  background: var(--line-soft);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+.boot__fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--cyan), var(--lime));
+  box-shadow: var(--glow-lime-sm);
+  transition: transform 120ms linear;
+  will-change: transform;
+}
+.boot__pct {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--cyan);
+  min-width: 3.4em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* skip hint */
+.boot__hint {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 2;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  animation: boot-hint 2.2s ease-in-out infinite;
+}
+@keyframes boot-hint {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 0.8; }
+}
+
+/* ---- reduced motion: kill decorative animation ---- */
+@media (prefers-reduced-motion: reduce) {
+  .boot__grid,
+  .boot__caret,
+  .boot__hint,
+  .boot__stage,
+  .boot__fill {
+    animation: none;
+    transition: none;
+  }
+  .boot__caret { opacity: 1; }
+}

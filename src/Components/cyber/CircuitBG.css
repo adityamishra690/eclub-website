@@ -1,0 +1,27 @@
+/* ==================================================================
+   CircuitBG — fixed, non-interactive background canvas layer.
+   Sits behind all content (z-index:0). Never captures pointer, never
+   contributes to layout, never causes overflow.
+   ================================================================== */
+.circuit-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  /* never let the canvas widen the page or intercept input */
+  user-select: none;
+  -webkit-user-select: none;
+  /* purely decorative; keep it from ever driving scroll */
+  contain: strict;
+}
+
+/* Belt-and-braces: if a user has reduced-motion on, the component
+   renders null anyway, but hide any stray canvas just in case. */
+@media (prefers-reduced-motion: reduce) {
+  .circuit-bg {
+    display: none;
+  }
+}

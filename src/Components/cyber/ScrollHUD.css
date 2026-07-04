@@ -1,0 +1,300 @@
+/* ==================================================================
+   ScrollHUD — scroll-progress HUD (NEURAL_BUILD // OS)
+   Desktop: fixed vertical rail, right edge, centred.
+   Mobile/tablet: slim horizontal progress bar under the navbar.
+   z-index 900 (navbar 1000, boot 100000). Only interactive nodes
+   receive pointer events.
+   ================================================================== */
+
+/* ------------------------------------------------------------------ */
+/*  DESKTOP RAIL  (>= 1101px)                                          */
+/* ------------------------------------------------------------------ */
+.shud-rail {
+  display: none; /* enabled at >=1101px */
+}
+
+.shud-bar {
+  /* --------- MOBILE / TABLET top progress bar (default) --------- */
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 900;
+  pointer-events: none;
+  background: var(--line-soft);
+  overflow: hidden;
+}
+
+.shud-bar-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(var(--shud-progress, 0));
+  background: linear-gradient(90deg, var(--lime-deep), var(--lime));
+  box-shadow: var(--glow-lime-sm);
+  will-change: transform;
+}
+
+@media (min-width: 1101px) {
+  /* hide the mobile bar, show the rail */
+  .shud-bar {
+    display: none;
+  }
+
+  .shud-rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+
+    position: fixed;
+    top: 50%;
+    right: clamp(6px, 0.7vw, 12px);
+    transform: translateY(-50%);
+    z-index: 900;
+
+    /* the rail itself is inert; only nodes opt back in */
+    pointer-events: none;
+    font-family: var(--font-mono);
+    user-select: none;
+  }
+
+  /* small mono readouts top & bottom of the rail */
+  .shud-rail-code {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    line-height: 1;
+  }
+  .shud-rail-top {
+    color: var(--cyan);
+    text-shadow: var(--text-glow-cyan);
+    transform: rotate(180deg);
+  }
+  .shud-rail-bot {
+    opacity: 0.7;
+  }
+
+  /* the track holds the progress line + the node list */
+  .shud-track {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-2) 0;
+
+    /* corner-bracket reticle framing */
+    border-top: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .shud-track::before,
+  .shud-track::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    width: 5px;
+    height: 5px;
+    border-right: 1px solid var(--line-cyan);
+  }
+  .shud-track::before {
+    top: -1px;
+    border-top: 1px solid var(--line-cyan);
+  }
+  .shud-track::after {
+    bottom: -1px;
+    border-bottom: 1px solid var(--line-cyan);
+  }
+
+  /* base (dim) vertical guide line running the length of the nodes */
+  .shud-track-line {
+    position: absolute;
+    top: var(--space-4);
+    bottom: var(--space-4);
+    right: calc(var(--space-2) + 3px); /* aligns with node centres */
+    width: 1px;
+    background: var(--line);
+    pointer-events: none;
+  }
+  /* lime fill scaling with overall page scroll progress */
+  .shud-track-fill {
+    position: absolute;
+    top: var(--space-4);
+    right: calc(var(--space-2) + 2px);
+    width: 2px;
+    height: calc(100% - (2 * var(--space-4)));
+    transform-origin: top center;
+    transform: scaleY(var(--shud-progress, 0));
+    background: linear-gradient(
+      180deg,
+      var(--lime-bright),
+      var(--lime),
+      var(--lime-deep)
+    );
+    box-shadow: var(--glow-lime-sm);
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .shud-list {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-3) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    position: relative;
+    z-index: 1;
+  }
+
+  .shud-item {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* the whole clickable node = 44px min tap target */
+  .shud-node-btn {
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0 0 0 var(--space-3);
+    cursor: pointer;
+    pointer-events: auto; /* the ONE interactive surface on the rail */
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-3);
+
+    min-height: 44px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    transition: color var(--t-hover);
+  }
+
+  /* meta = code + label, sits to the LEFT of the node, slides/unfurls in */
+  .shud-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    overflow: hidden;
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: max-width var(--dur-4) var(--ease-out),
+      opacity var(--dur-3) var(--ease-out),
+      transform var(--dur-4) var(--ease-out);
+    white-space: nowrap;
+  }
+  .shud-code {
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    color: var(--cyan);
+    text-shadow: var(--text-glow-cyan);
+  }
+  .shud-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 3px 8px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xs);
+    background: var(--surface-nav-scrolled);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  /* reveal the label ONLY on hover/focus so it never sits over section content */
+  .shud-node-btn:hover .shud-meta,
+  .shud-node-btn:focus-visible .shud-meta {
+    max-width: 220px;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* the tick / node itself — kept small so the rail is a thin edge accent */
+  .shud-node {
+    position: relative;
+    flex: 0 0 auto;
+    width: 7px;
+    height: 7px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: var(--bg-1);
+    transition: border-color var(--t-hover), box-shadow var(--t-hover),
+      transform var(--t-hover);
+  }
+  .shud-node-dot {
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    transition: background var(--t-hover), transform var(--t-hover),
+      box-shadow var(--t-hover);
+  }
+
+  /* hover state */
+  .shud-node-btn:hover .shud-node,
+  .shud-node-btn:focus-visible .shud-node {
+    border-color: var(--cyan);
+    box-shadow: var(--glow-cyan-sm);
+  }
+  .shud-node-btn:hover .shud-node-dot,
+  .shud-node-btn:focus-visible .shud-node-dot {
+    background: var(--cyan);
+  }
+  .shud-node-btn:hover,
+  .shud-node-btn:focus-visible {
+    color: var(--text);
+  }
+
+  /* ACTIVE state — lights lime + glows */
+  .shud-item.is-active .shud-node-btn {
+    color: var(--lime);
+  }
+  .shud-item.is-active .shud-node {
+    border-color: var(--lime);
+    background: var(--bg-0);
+    box-shadow: var(--glow-lime-md);
+    transform: scale(1.15);
+  }
+  .shud-item.is-active .shud-node-dot {
+    background: var(--lime-bright);
+    box-shadow: var(--glow-lime-sm);
+    transform: scale(1.4);
+  }
+  .shud-item.is-active .shud-label {
+    color: var(--text-strong);
+    border-color: var(--line-strong);
+  }
+
+  /* focus ring lives on the node, not the whole button, for tidiness */
+  .shud-node-btn:focus-visible {
+    outline: none;
+  }
+  .shud-node-btn:focus-visible .shud-node {
+    box-shadow: var(--glow-cyan-sm), var(--focus-ring);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reduced motion — kill the pulse; keep instant state changes        */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .shud-bar-fill,
+  .shud-track-fill,
+  .shud-meta,
+  .shud-node,
+  .shud-node-dot,
+  .shud-node-btn {
+    transition: none !important;
+  }
+}

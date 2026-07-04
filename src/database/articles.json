@@ -1,0 +1,88 @@
+{
+  "Articles": [
+    {
+      "title": "Quantum Computing 101: How to Build a Quantum Computer",
+      "description": "A beginner-friendly guide to the basics of quantum computing, including how quantum gates and qubits work.",
+      "imagePath": "articles/quantum.webp",
+      "url": "https://medium.com/electronics-club-iitk/quantum-computing-101-how-to-build-a-quantum-computer-77c7311333f8",
+      "year": "2025"
+    },
+    {
+      "title": "Photonic Circuits",
+      "description": "An introduction to integrated photonics and how light can be used for on-chip computation and communication.",
+      "imagePath": "articles/photonic.webp",
+      "url": "https://medium.com/electronics-club-iitk/photonic-circuits-4b49f7744b34",
+      "year": "2025"
+    },
+    {
+      "title": "ARM vs AMD: A Journey Through Architectures, Innovations, and the AI Frontier",
+      "description": "Comparative insights into CPU architectures and their evolving roles in AI workloads.",
+      "imagePath": "articles/ARM_AMD.jpeg",
+      "url": "https://medium.com/electronics-club-iitk/arm-vs-amd-a-journey-through-architectures-innovations-and-the-ai-frontier-9cb825eb617f",
+      "year": "2025"
+    },
+    {
+      "title": "The Magic of SSDs: Unpacking the Technology Behind Solid-State Drives",
+      "description": "Demystifying how SSDs work under the hood, from NAND flash to controllers.",
+      "imagePath": "articles/SSD.webp",
+      "url": "https://medium.com/electronics-club-iitk/the-magic-of-ssds-unpacking-the-technology-behind-solid-state-drives-90e275682fb2",
+      "year": "2024"
+    },
+    {
+      "title": "Virtual and Augmented Reality",
+      "description": "Exploring the fundamentals and applications of VR and AR technologies.",
+      "imagePath": "articles/VR_AR.webp",
+      "url": "https://medium.com/electronics-club-iitk/virtual-and-augmented-reality-387d15d79db6",
+      "year": "2022"
+    },
+    {
+      "title": "A Closer Look at Neuromorphic Computing",
+      "description": "An overview of brain-inspired computing architectures and their potential.",
+      "imagePath": "articles/neuro.webp",
+      "url": "https://medium.com/electronics-club-iitk/a-closer-look-at-neuromorphic-computing-a16162b00ebb",
+      "year": "2024"
+    },
+    {
+      "title": "Convolutional Neural Network (CNN)",
+      "description": "Basics of CNNs and how convolutional layers enable powerful vision models.",
+      "imagePath": "articles/cnn.webp",
+      "url": "https://medium.com/electronics-club-iitk/convolutional-neural-network-cnn-43709fc116a",
+      "year": "2021"
+    },
+    {
+      "title": "IoT Traffic Metadata Attack",
+      "description": "Understanding metadata-based attacks on IoT traffic and possible defenses.",
+      "imagePath": "articles/iot.webp",
+      "url": "https://medium.com/electronics-club-iitk/iot-traffic-metadata-attack-2d6ba0445805",
+      "year": "2021"
+    },
+    {
+      "title": "An Introduction to Raspberry Pi",
+      "description": "Getting started with the Raspberry Pi platform and beginner projects.",
+      "imagePath": "articles/rpi.webp",
+      "url": "https://medium.com/electronics-club-iitk/an-introduction-to-raspberry-pi-a48bba2359db",
+      "year": "2020"
+    },
+    {
+      "title": "Impacts of AI in the Present and the Near Future",
+      "description": "Survey of AI applications today and what to expect in the near future.",
+      "imagePath": "articles/AI_Impacts.webp",
+      "url": "https://medium.com/electronics-club-iitk/impacts-of-ai-in-the-present-and-the-near-future-86f899d2ee73",
+      "year": "2020"
+    },
+    {
+      "title": "Machine Learning",
+      "description": "Introductory overview of machine learning concepts and techniques.",
+      "imagePath": "articles/ml_intro.webp",
+      "url": "https://medium.com/electronics-club-iitk/machine-learning-9eea486862e2",
+      "year": "2020"
+    },
+    {
+      "title": "ESP8266: Making Wireless Communication Possible",
+      "description": "Overview of the ESP8266 Wi‑Fi module and how it enables wireless IoT connectivity.",
+      "imagePath": "articles/esp8266.webp",
+      "url": "https://medium.com/electronics-club-iitk/esp8266-making-wireless-communication-possible-46afd470866",
+      "year": "2020"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <script type="text/javascript">
+      const fullPath = window.location.pathname + window.location.search + window.location.hash;
+      if (!sessionStorage.getItem("redirected")) {
+        sessionStorage.setItem("redirected", "true");
+        const target = "/?redirect=" + encodeURIComponent(fullPath);
+        window.location.replace(target);
+      }
+    </script>
+  </head>
+  <body>
+    Redirecting…
+  </body>
+</html>

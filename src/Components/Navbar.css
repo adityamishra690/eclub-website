@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+/* ---- site-wide resets / tokens (kept for the rest of the app) ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary: rgba(37, 37, 37, 1.0);
+  --secondary: #BBDF4D;
+  --shades: rgba(238, 238, 238, 1.0);
+}
+* {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Ubuntu', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==================================================================
+   CYBER NAVBAR (.nvx) — NEURAL_BUILD // OS
+   Colors, spacing, motion pull from the global tokens in src/index.css.
+   ================================================================== */
+.nvx {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  height: var(--nav-h);
+  padding: 0 var(--space-5);
+
+  font-family: var(--font-mono);
+  background: var(--surface-nav);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden; /* keep .nvx__scan from painting outside the bar */
+  transition:
+    background var(--dur-4) var(--ease-out),
+    border-color var(--dur-4) var(--ease-out),
+    box-shadow var(--dur-4) var(--ease-out);
+}
+.nvx--scrolled {
+  background: var(--surface-nav-scrolled);
+  border-bottom-color: var(--line-strong);
+  box-shadow: var(--shadow-nav);
+}
+
+/* On the snap home page the navbar floats (fixed) so it doesn't push the hero
+   down — the hero fills the whole first screen; the bar is see-through until you
+   scroll, then it solidifies via .nvx--scrolled. */
+html.home-snap .nvx {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+html.home-snap .nvx:not(.nvx--scrolled) {
+  background: linear-gradient(180deg, rgba(5, 7, 10, 0.6), transparent);
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* animated bottom scan line */
+.nvx__scan {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, var(--lime), transparent);
+  animation: nvx-scan 5s linear infinite;
+  opacity: 0.7;
+  pointer-events: none;
+}
+@keyframes nvx-scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+/* ---------- brand ---------- */
+.nvx__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nvx__logo {
+  filter: drop-shadow(0 0 6px rgba(187, 223, 77, 0.35));
+}
+.nvx__word {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  font-size: 1.02rem;
+  color: var(--text-strong);
+  white-space: nowrap;
+}
+.nvx__word b {
+  color: var(--lime);
+  font-weight: 700;
+  margin-left: 0.42em; /* real gap between ELECTRONICS and CLUB */
+}
+
+/* ---------- desktop links ---------- */
+.nvx__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  height: 100%;
+}
+.nvx__links > li {
+  display: flex;
+  height: 100%;
+}
+.nvx__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color var(--t-hover);
+}
+.nvx__link::after {
+  content: "";
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: 8px;
+  height: 1px;
+  background: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-3) var(--ease-out);
+}
+.nvx__link:hover {
+  color: var(--text-strong);
+}
+.nvx__link:hover::after {
+  transform: scaleX(1);
+}
+.nvx__link.is-active {
+  color: var(--lime);
+  text-shadow: var(--text-glow-lime);
+}
+.nvx__link.is-active::after {
+  transform: scaleX(1);
+  box-shadow: 0 0 8px var(--lime);
+}
+
+/* ---------- hamburger (hidden on desktop) ---------- */
+.nvx__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 9px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  z-index: 1002;
+}
+.nvx__burger span {
+  height: 2px;
+  width: 100%;
+  background: var(--lime);
+  transition: transform var(--dur-3) var(--ease-out), opacity var(--dur-2) var(--ease-out);
+}
+.nvx__burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nvx__burger.is-open span:nth-child(2) { opacity: 0; }
+.nvx__burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- fullscreen overlay menu ---------- */
+.nvx__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 var(--space-7);
+  gap: 0;
+  background: var(--surface-overlay);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  visibility: hidden;
+  clip-path: inset(0 0 100% 0);
+  transition:
+    clip-path var(--dur-5) var(--ease-out),
+    opacity var(--dur-4) var(--ease-out),
+    visibility var(--dur-4);
+}
+.nvx__overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  clip-path: inset(0 0 0% 0);
+}
+.nvx__overlay-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(187, 223, 77, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(187, 223, 77, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 30% 40%, black, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 30% 40%, black, transparent 75%);
+  pointer-events: none;
+}
+.nvx__overlay ul {
+  list-style: none;
+  position: relative;
+  z-index: 2;
+  padding: var(--space-9) 0;
+}
+.nvx__overlay li {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition:
+    opacity var(--dur-4) var(--ease-out),
+    transform var(--dur-4) var(--ease-out);
+}
+.nvx__overlay.is-open li {
+  opacity: 1;
+  transform: translateX(0);
+}
+.nvx__overlay a {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: 10px 0;
+  min-height: 44px;
+  text-decoration: none;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 8vw, 3rem);
+  letter-spacing: 0.01em;
+  transition: color var(--t-hover), padding-left var(--dur-3) var(--ease-out);
+}
+.nvx__overlay a:hover,
+.nvx__overlay a.is-active {
+  color: var(--lime);
+  padding-left: 12px;
+  text-shadow: 0 0 20px rgba(187, 223, 77, 0.4);
+}
+.nvx__idx {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--cyan);
+  font-style: normal;
+  opacity: 0.8;
+}
+.nvx__overlay-foot {
+  position: absolute;
+  bottom: 30px;
+  left: var(--space-7);
+  right: var(--space-7);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: rgba(187, 223, 77, 0.5);
+}
+
+/* ---------- focus-visible (keyboard) ---------- */
+.nvx__brand:focus-visible,
+.nvx__link:focus-visible,
+.nvx__burger:focus-visible,
+.nvx__overlay a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--r-xs);
+}
+
+/* ---------- responsive switch ----------
+   The 9 links crowd between ~1025-1200px, so swap to the burger at 1100px. */
+@media (min-width: 1101px) and (max-width: 1240px) {
+  .nvx__link {
+    padding: 0 var(--space-2);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+}
+@media (max-width: 1100px) {
+  .nvx__links { display: none; }
+  .nvx__burger { display: flex; }
+}
+@media (min-width: 1101px) {
+  .nvx__overlay { display: none; }
+}
+
+/* ---------- landscape / short viewports ---------- */
+@media (max-height: 600px) {
+  .nvx__overlay {
+    justify-content: flex-start;
+    padding-top: 70px;
+  }
+  .nvx__overlay ul {
+    padding: 0 0 var(--space-8);
+  }
+  .nvx__overlay a {
+    font-size: 1.3rem;
+    padding: 6px 0;
+    min-height: 0;
+  }
+  .nvx__overlay-foot {
+    position: static;
+    margin-top: var(--space-4);
+  }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .nvx,
+  .nvx__link,
+  .nvx__link::after,
+  .nvx__burger span,
+  .nvx__overlay a {
+    transition: none;
+  }
+  .nvx__scan { animation: none; }
+  .nvx__overlay {
+    transition: opacity var(--dur-2) var(--ease-out), visibility var(--dur-2);
+  }
+  .nvx__overlay li {
+    transition: opacity var(--dur-2) var(--ease-out);
+    transform: none;
+  }
+  .nvx__overlay.is-open li { transform: none; }
+}
