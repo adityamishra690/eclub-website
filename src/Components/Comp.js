@@ -1,5 +1,5 @@
 import React from 'react';
-import './comp.css';
+import './Comp.css';
 const Components = () => {
     return (
         <>

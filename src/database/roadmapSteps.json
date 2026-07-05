@@ -1,0 +1,42 @@
+{
+  "Computer Vision": [
+    "Python & NumPy basics",
+    "Image fundamentals: pixels, color spaces, filtering",
+    "OpenCV essentials",
+    "Feature & edge detection",
+    "Intro to CNNs for vision",
+    "Build a mini vision project"
+  ],
+  "Signal Processing & ML": [
+    "Signals & systems fundamentals",
+    "Fourier transforms & frequency domain",
+    "Digital filter design",
+    "Machine learning basics",
+    "Applying ML to signal data",
+    "Mini project: classify or denoise a signal"
+  ],
+  "FPGA": [
+    "Digital logic fundamentals",
+    "HDL basics (Verilog/VHDL)",
+    "Combinational & sequential design",
+    "Simulation & testbenches",
+    "Synthesis & board programming",
+    "Build a small FPGA project"
+  ],
+  "Internet of Things": [
+    "Microcontroller basics (ESP32/Arduino)",
+    "Sensors & actuators",
+    "Networking (WiFi / MQTT / HTTP)",
+    "Cloud dashboard & data logging",
+    "IoT security basics",
+    "Build a connected device project"
+  ],
+  "PCB Designing": [
+    "Schematic capture basics",
+    "Component selection & datasheets",
+    "PCB layout fundamentals",
+    "Design rules & signal integrity basics",
+    "Gerber generation & fabrication",
+    "Assemble & test your first board"
+  ]
+}

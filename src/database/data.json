@@ -1,305 +1,300 @@
 {
-    "pastcoordi":[
-       {
-            "id":1,
-            "name":"Rachit Agarwal",
-            "email":"rachitag23@iitk.ac.in",
-            "image":"Rachit_23 - Rachit Agarwal.jpg",
-            "facebook":"https://www.instagram.com/rac.hit_a6105/"
-        },
-        {
-           "id":2,
-            "name":"Ashish Upadhyay",
-            "email":"ashishu23@iitk.ac.in",
-            "image":"ashish.webp",
-           "facebook":"https://www.instagram.com/ashish_upadhyay_01/"
-        },
-        {
-            "id":3,
-            "name" : "Mrigeesh Ashwin ",
-            "email":"mrigeeshak23@iitk.ac.in",
-            "image":"Mrigeesh_Ashwin_23 - Mrigeesh Ashwin.jpg",
-            "facebook":"https://www.instagram.com/mrigeesh_ashwin/"
-    
-        },
-        {
-            "id":4,
-            "name":"Kshitij Bhardwaj",
-            "email":"kshitijb23@iitk.ac.in",
-            "image":"kshitij_new.jpeg",
-           "facebook":"https://www.instagram.com/tensor.1729/"        }
-
-    ],
-
-    "coordi":[
-        {
-            "id":1,
-            "name":"Aashutosh Kushwaha",
-            "email":"aashutoshk24@iitk.ac.in",
-            "image":"Aashutosh Kushwaha-24.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/aashutosh_k21/"
-        },
-        {
-            "id":2,
-            "name":"Arushi Kondaskar",
-            "email":"arushik24@iitk.ac.in",
-            "image":"Arushi Kondaskar-24.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/arushi_kondaskar_14/" 
-        },
-        {
-            "id":3,
-            "name":"Lakshya Gupta ",
-            "email":"lakshyag24@iitk.ac.in",
-            "image":"Lakshya Gupta-24.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/lakshyag911/"
-        },
-        {
-            "id":4,
-            "name" : "Sahil Agarwal",
-            "email":"sahilag24@iitk.ac.in",
-            "image":"Sahil Agarwal-24.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/buri_._buri_._zaemon/"
-        }
-        
-    ],
-
-    "manager":[
-        {
-            "id":1,
-            "name":"Aditi",
-            "email":"aditig25@iitk.ac.in",
-            "image":"Aditi -25.jpeg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/aditigarg_16/"
-        },
-        {
-            "id":2,
-            "name":"Aditya Mishra",
-            "email":"adityakm25@iitk.ac.in",
-            "image":"Aditya Mishra -25.jpeg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/a.mishrraaa/"
-        },
-        {
-            "id":3,
-            "name":"Advaith Anand",
-            "email":"advaithan25@iitk.ac.in",
-            "image":"Advaith Anand -25.jpeg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/djmassi0101/"
-        },
-        {
-            "id":4,
-            "name":"Aishwary Kumar",
-            "email":"aishwaryk25@iitk.ac.in",
-            "image":"Aishwary kumar-25.jpg",
-            "linkedin":"#",
-            "facebook":"#"
-        },
-        {
-            "id":5,
-            "name":"Akshat Joshi",
-            "email":"akshatj25@iitk.ac.in",
-            "image":"Akshat Joshi -25.jpeg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/akshatj_005/"
-        },
-        {
-            "id":6,
-            "name":"Aldin Correya",
-            "email":"aldin25@iitk.ac.in",
-            "image":"Aldin -25.jpeg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/aldincorrey/"
-        },
-        {
-            "id":7,
-            "name":"Amay Gavade",
-            "email":"amaydg25@iitk.ac.in",
-            "image":"Amay Gavade-25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/amay_9929/"
-        },
-        {
-            "id":8,
-            "name":"Ankit Arya",
-            "email":"aankit25@iitk.ac.in",
-            "image":"Ankit Arya-25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/ankit.1arya/"
-        },
-        {
-            "id":9,
-            "name":"Arv Sharma",
-            "email":"arvsharma25@iitk.ac.in",
-            "image":"Arv Sharma -25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/arvsharma2611/"
-        },
-        {
-            "id":10,
-            "name":"Darsh Kedia",
-            "email":"darshkedia25@iitk.ac.in",
-            "image":"Darsh Kedia -25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/kedia.24/"
-        },
-        {
-            "id":11,
-            "name":"Devansh Verma",
-            "email":"devanshv25@iitk.ac.in",
-            "image":"Devansh Verma -25.jpeg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/devanshverma0303/"
-        },
-        {
-            "id":12,
-            "name":"Gauri Singh",
-            "email":"gaurisingh25@iitk.ac.in",
-            "image":"Gauri Singh -25.jpeg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/gauri.sii/"
-        },
-        {
-            "id":13,
-            "name":"Gulshan",
-            "email":"gulshank25@iitk.ac.in",
-            "image":"GULSHAN KUMHAR-25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/gulshan_p2/"
-        },
-        {
-            "id":14,
-            "name":"Harshita Bharti",
-            "email":"bharshita25@iitk.ac.in",
-            "image":"Harshita Bharti -25.jpeg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/harshita15_8/"
-        },
-        {
-            "id":15,
-            "name":"Jagan Deepu",
-            "email":"jagandeepu25@iitk.ac.in",
-            "image":"Jagan Deepu-25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/jagann_deepu/"
-        },
-        {
-            "id":16,
-            "name":"Kapil Shindekar",
-            "email":"kapils25@iitk.ac.in",
-            "image":"Kapil Shindekar-25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/kapilshindekar/"
-        },
-        {
-            "id":17,
-            "name":"Kratagya Jain",
-            "email":"kratagyaj25@iitk.ac.in",
-            "image":"Kratagya Jain-25.png",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/callmektg_19/"
-        },
-        {
-            "id":18,
-            "name":"Lavanya Prakash",
-            "email":"lprakash25@iitk.ac.in",
-            "image":"Lavanya Prakash-25.png",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/p.lavanya.02/"
-        },
-        {
-            "id":19,
-            "name":"Lucky Singh",
-            "email":"lsingh25@iitk.ac.in",
-            "image":"Lucky Singh -25.jpg",
-            "linkedin":"#",
-            "facebook":"#"
-        },
-        {
-            "id":20,
-            "name":"Mohit Choudhary",
-            "email":"mohitch25@iitk.ac.in",
-            "image":"Mohit Choudhary-25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/mohit.choudhary.01/"
-        },
-        {
-            "id":21,
-            "name":"Nandana Ranjish",
-            "email":"nandanar25@iitk.ac.in",
-            "image":"Nandana Ranjish-25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/nandanaranjish/"
-        },
-        {
-            "id":22,
-            "name":"Pratham Sharma",
-            "email":"prathams25@iitk.ac.in",
-            "image":"PRATHAM SHARMA -25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/pratham_sharma_015/"
-        },
-        {
-            "id":23,
-            "name":"R Chinmaygowda",
-            "email":"chinmaygowda25@iitk.ac.in",
-            "image":"Chinmaygowda R -25.jpeg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/chinmay_ak/"
-        },
-        {
-            "id":24,
-            "name":"Rishikesh J",
-            "email":"rishikesh25@iitk.ac.in",
-            "image":"Rishikesh Jagadeesh-25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/rishikesh__1310/"
-        },
-        {
-            "id":25,
-            "name":"Sabari Nath B",
-            "email":"sabari25@iitk.ac.in",
-            "image":"Sabari Nath-25.png",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/sabari.nxth/"
-        },
-        {
-            "id":26,
-            "name":"Shreyash Katiyar",
-            "email":"kshreyash25@iitk.ac.in",
-            "image":"Shreyash Katiyar -25.png",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/shreyashkatiyar3/"
-        },
-        {
-            "id":27,
-            "name":"Sounava De",
-            "email":"dsounave25@iitk.ac.in",
-            "image":"SOUNAVA DE-25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/sounavade/"
-        },
-        {
-            "id":28,
-            "name":"Suhas Sreejan B",
-            "email":"bssreejan25@iitk.ac.in",
-            "image":"Suhas sreejan-25.jpeg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/suhas_508_/"
-        },
-        {
-            "id":29,
-            "name":"Vivaan Rao",
-            "email":"rvivaan25@iitk.ac.in",
-            "image":"Vivaan Rao-25.jpg",
-            "linkedin":"#",
-            "facebook":"https://www.instagram.com/v1vaan.rao/"
-        }
-    ]
-}    
-    
+  "pastcoordi": [
+    {
+      "id": 1,
+      "name": "Rachit Agarwal",
+      "email": "rachitag23@iitk.ac.in",
+      "image": "team/Rachit_23 - Rachit Agarwal.jpg",
+      "facebook": "https://www.instagram.com/rac.hit_a6105/"
+    },
+    {
+      "id": 2,
+      "name": "Ashish Upadhyay",
+      "email": "ashishu23@iitk.ac.in",
+      "image": "team/ashish.webp",
+      "facebook": "https://www.instagram.com/ashish_upadhyay_01/"
+    },
+    {
+      "id": 3,
+      "name": "Mrigeesh Ashwin ",
+      "email": "mrigeeshak23@iitk.ac.in",
+      "image": "team/Mrigeesh_Ashwin_23 - Mrigeesh Ashwin.jpg",
+      "facebook": "https://www.instagram.com/mrigeesh_ashwin/"
+    },
+    {
+      "id": 4,
+      "name": "Kshitij Bhardwaj",
+      "email": "kshitijb23@iitk.ac.in",
+      "image": "team/kshitij_new.jpeg",
+      "facebook": "https://www.instagram.com/tensor.1729/"
+    }
+  ],
+  "coordi": [
+    {
+      "id": 1,
+      "name": "Aashutosh Kushwaha",
+      "email": "aashutoshk24@iitk.ac.in",
+      "image": "team/Aashutosh Kushwaha-24.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/aashutosh_k21/"
+    },
+    {
+      "id": 2,
+      "name": "Arushi Kondaskar",
+      "email": "arushik24@iitk.ac.in",
+      "image": "team/Arushi Kondaskar-24.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/arushi_kondaskar_14/"
+    },
+    {
+      "id": 3,
+      "name": "Lakshya Gupta ",
+      "email": "lakshyag24@iitk.ac.in",
+      "image": "team/Lakshya Gupta-24.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/lakshyag911/"
+    },
+    {
+      "id": 4,
+      "name": "Sahil Agarwal",
+      "email": "sahilag24@iitk.ac.in",
+      "image": "team/Sahil Agarwal-24.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/buri_._buri_._zaemon/"
+    }
+  ],
+  "manager": [
+    {
+      "id": 1,
+      "name": "Aditi",
+      "email": "aditig25@iitk.ac.in",
+      "image": "team/Aditi -25.jpeg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/aditigarg_16/"
+    },
+    {
+      "id": 2,
+      "name": "Aditya Mishra",
+      "email": "adityakm25@iitk.ac.in",
+      "image": "team/Aditya Mishra -25.jpeg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/a.mishrraaa/"
+    },
+    {
+      "id": 3,
+      "name": "Advaith Anand",
+      "email": "advaithan25@iitk.ac.in",
+      "image": "team/Advaith Anand -25.jpeg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/djmassi0101/"
+    },
+    {
+      "id": 4,
+      "name": "Aishwary Kumar",
+      "email": "aishwaryk25@iitk.ac.in",
+      "image": "team/Aishwary kumar-25.jpg",
+      "linkedin": "#",
+      "facebook": "#"
+    },
+    {
+      "id": 5,
+      "name": "Akshat Joshi",
+      "email": "akshatj25@iitk.ac.in",
+      "image": "team/Akshat Joshi -25.jpeg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/akshatj_005/"
+    },
+    {
+      "id": 6,
+      "name": "Aldin Correya",
+      "email": "aldin25@iitk.ac.in",
+      "image": "team/Aldin -25.jpeg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/aldincorrey/"
+    },
+    {
+      "id": 7,
+      "name": "Amay Gavade",
+      "email": "amaydg25@iitk.ac.in",
+      "image": "team/Amay Gavade-25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/amay_9929/"
+    },
+    {
+      "id": 8,
+      "name": "Ankit Arya",
+      "email": "aankit25@iitk.ac.in",
+      "image": "team/Ankit Arya-25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/ankit.1arya/"
+    },
+    {
+      "id": 9,
+      "name": "Arv Sharma",
+      "email": "arvsharma25@iitk.ac.in",
+      "image": "team/Arv Sharma -25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/arvsharma2611/"
+    },
+    {
+      "id": 10,
+      "name": "Darsh Kedia",
+      "email": "darshkedia25@iitk.ac.in",
+      "image": "team/Darsh Kedia -25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/kedia.24/"
+    },
+    {
+      "id": 11,
+      "name": "Devansh Verma",
+      "email": "devanshv25@iitk.ac.in",
+      "image": "team/Devansh Verma -25.jpeg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/devanshverma0303/"
+    },
+    {
+      "id": 12,
+      "name": "Gauri Singh",
+      "email": "gaurisingh25@iitk.ac.in",
+      "image": "team/Gauri Singh -25.jpeg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/gauri.sii/"
+    },
+    {
+      "id": 13,
+      "name": "Gulshan",
+      "email": "gulshank25@iitk.ac.in",
+      "image": "team/GULSHAN KUMHAR-25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/gulshan_p2/"
+    },
+    {
+      "id": 14,
+      "name": "Harshita Bharti",
+      "email": "bharshita25@iitk.ac.in",
+      "image": "team/Harshita Bharti -25.jpeg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/harshita15_8/"
+    },
+    {
+      "id": 15,
+      "name": "Jagan Deepu",
+      "email": "jagandeepu25@iitk.ac.in",
+      "image": "team/Jagan Deepu-25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/jagann_deepu/"
+    },
+    {
+      "id": 16,
+      "name": "Kapil Shindekar",
+      "email": "kapils25@iitk.ac.in",
+      "image": "team/Kapil Shindekar-25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/kapilshindekar/"
+    },
+    {
+      "id": 17,
+      "name": "Kratagya Jain",
+      "email": "kratagyaj25@iitk.ac.in",
+      "image": "team/Kratagya Jain-25.png",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/callmektg_19/"
+    },
+    {
+      "id": 18,
+      "name": "Lavanya Prakash",
+      "email": "lprakash25@iitk.ac.in",
+      "image": "team/Lavanya Prakash-25.png",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/p.lavanya.02/"
+    },
+    {
+      "id": 19,
+      "name": "Lucky Singh",
+      "email": "lsingh25@iitk.ac.in",
+      "image": "team/Lucky Singh -25.jpg",
+      "linkedin": "#",
+      "facebook": "#"
+    },
+    {
+      "id": 20,
+      "name": "Mohit Choudhary",
+      "email": "mohitch25@iitk.ac.in",
+      "image": "team/Mohit Choudhary-25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/mohit.choudhary.01/"
+    },
+    {
+      "id": 21,
+      "name": "Nandana Ranjish",
+      "email": "nandanar25@iitk.ac.in",
+      "image": "team/Nandana Ranjish-25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/nandanaranjish/"
+    },
+    {
+      "id": 22,
+      "name": "Pratham Sharma",
+      "email": "prathams25@iitk.ac.in",
+      "image": "team/PRATHAM SHARMA -25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/pratham_sharma_015/"
+    },
+    {
+      "id": 23,
+      "name": "R Chinmaygowda",
+      "email": "chinmaygowda25@iitk.ac.in",
+      "image": "team/Chinmaygowda R -25.jpeg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/chinmay_ak/"
+    },
+    {
+      "id": 24,
+      "name": "Rishikesh J",
+      "email": "rishikesh25@iitk.ac.in",
+      "image": "team/Rishikesh Jagadeesh-25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/rishikesh__1310/"
+    },
+    {
+      "id": 25,
+      "name": "Sabari Nath B",
+      "email": "sabari25@iitk.ac.in",
+      "image": "team/Sabari Nath-25.png",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/sabari.nxth/"
+    },
+    {
+      "id": 26,
+      "name": "Shreyash Katiyar",
+      "email": "kshreyash25@iitk.ac.in",
+      "image": "team/Shreyash Katiyar -25.png",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/shreyashkatiyar3/"
+    },
+    {
+      "id": 27,
+      "name": "Sounava De",
+      "email": "dsounave25@iitk.ac.in",
+      "image": "team/SOUNAVA DE-25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/sounavade/"
+    },
+    {
+      "id": 28,
+      "name": "Suhas Sreejan B",
+      "email": "bssreejan25@iitk.ac.in",
+      "image": "team/Suhas sreejan-25.jpeg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/suhas_508_/"
+    },
+    {
+      "id": 29,
+      "name": "Vivaan Rao",
+      "email": "rvivaan25@iitk.ac.in",
+      "image": "team/Vivaan Rao-25.jpg",
+      "linkedin": "#",
+      "facebook": "https://www.instagram.com/v1vaan.rao/"
+    }
+  ]
+}

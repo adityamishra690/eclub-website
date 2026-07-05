@@ -1,13 +1,16 @@
 import React from 'react';
-import FolderCard from './foldercard';
+import FolderCard from './FolderCard';
 import CircuitBG from './cyber/CircuitBG';
 import CircuitTraceBG from './cyber/CircuitTraceBG';
 import Reveal from './cyber/Reveal';
+import Cursor from './cyber/Cursor';
 import "./Database.css";
 
 const Database = () => {
   return (
     <div className="db-root">
+      {/* same neon dot + lagging ring cursor used on the homepage */}
+      <Cursor />
       {/* same drifting lime/cyan node constellation used on the homepage */}
       <CircuitBG />
 

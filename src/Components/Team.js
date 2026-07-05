@@ -1,5 +1,5 @@
 import React from "react";
-import "./team.css";
+import "./Team.css";
 import data from "../database/data.json";
 
 const Card = ({ title, items, featured = false }) => {

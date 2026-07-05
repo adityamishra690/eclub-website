@@ -643,7 +643,7 @@ _ ready for input`}
                   <span className="ch-domain-sheen" />
                   <div
                     className="ch-domain-img"
-                    style={{ backgroundImage: `url(${d.img})` }}
+                    style={{ backgroundImage: `url(/images/${d.img})` }}
                   />
                   <div className="ch-domain-body">
                     <span className="ch-domain-tag">{d.tag}</span>

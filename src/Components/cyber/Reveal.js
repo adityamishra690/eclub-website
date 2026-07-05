@@ -21,8 +21,9 @@ export default function Reveal({ children, delay = 0, y = 40, className = "", cu
 
   if (cut) {
     return (
-      <div ref={ref} className={`db-cut ${className}`}>
+      <div ref={ref} className="db-cut">
         <motion.div
+          className={className}
           initial={{ y: "115%" }}
           animate={inView ? { y: "0%" } : { y: "115%" }}
           transition={{ duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] }}

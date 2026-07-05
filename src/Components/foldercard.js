@@ -4,6 +4,31 @@ import Reveal from './cyber/Reveal';
 import './FolderCard.css';
 import Database from './../database/database.json';
 import Roadmaps from './../database/roadmaps.json'; // ✅ Added
+import RoadmapSteps from './../database/roadmapSteps.json';
+
+/* ------------------------------------------------------------------ */
+/*  Roadmap progress — persisted client-side per visitor.              */
+/*  Edit src/database/roadmapSteps.json to change the milestones;      */
+/*  nothing here needs to change when that content changes.            */
+/* ------------------------------------------------------------------ */
+const PROGRESS_STORAGE_KEY = 'eclub-roadmap-progress-v1';
+
+function loadAllProgress() {
+  try {
+    const raw = window.localStorage.getItem(PROGRESS_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveAllProgress(next) {
+  try {
+    window.localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(next));
+  } catch {
+    // localStorage unavailable (private mode, etc.) — progress just won't persist
+  }
+}
 
 /* ------------------------------------------------------------------ */
 /*  Auto-categorization — no manual tagging of 40 JSON entries needed. */
@@ -79,6 +104,23 @@ const FolderCard = () => {
   const [showMore, setShowMore] = useState({});
   const [searchText, setSearchText] = useState('');
   const [activeCategory, setActiveCategory] = useState('ALL');
+  const [progress, setProgress] = useState(() => loadAllProgress());
+  const [openSteps, setOpenSteps] = useState({});
+
+  const toggleStepsOpen = (folderName) => {
+    setOpenSteps((prev) => ({ ...prev, [folderName]: !prev[folderName] }));
+  };
+
+  const toggleStep = (folderName, stepIndex, totalSteps) => {
+    setProgress((prev) => {
+      const current = prev[folderName] || new Array(totalSteps).fill(false);
+      const nextSteps = [...current];
+      nextSteps[stepIndex] = !nextSteps[stepIndex];
+      const next = { ...prev, [folderName]: nextSteps };
+      saveAllProgress(next);
+      return next;
+    });
+  };
 
   // tag + index every entry once
   const entries = useMemo(
@@ -122,34 +164,99 @@ const FolderCard = () => {
           </Reveal>
 
           <div className='roadmap-row'>
-            {Roadmaps.Roadmaps.map((folder, index) => (
+            {Roadmaps.Roadmaps.map((folder, index) => {
+              const steps = RoadmapSteps[folder.FolderName] || [];
+              const done = (progress[folder.FolderName] || []).filter(Boolean).length;
+              const total = steps.length;
+              const pct = total ? Math.round((done / total) * 100) : 0;
+              const stepsOpen = !!openSteps[folder.FolderName];
+
+              return (
                 <motion.div
                     key={`roadmap-reveal-${index}`}
+                    className='roadmap-cell'
                     initial={{ opacity: 0, y: 22 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-40px' }}
                     transition={{ duration: 0.5, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <TiltPanel className='roadmap-tilt'>
-                    <a
-                        href={folder.Files[0].Link}
-                        className='foldercard roadmap-card'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >
+                    <div className='foldercard roadmap-card'>
                       <span className='db-corner db-corner-tl' />
                       <span className='db-corner db-corner-br' />
                       <span className='db-scan' aria-hidden='true' />
                       <span className='db-roadmap-index'>{hex(index + 1)}</span>
+
                       <div className='Top'>
                         <h4 className='folder-name'>{folder.FolderName}</h4>
                       </div>
                       <p className='description'>{folder.Description}</p>
-                      <span className='db-cardlink'>VIEW ROADMAP →</span>
-                    </a>
+
+                      {total > 0 && (
+                        <div className='db-progress'>
+                          <div className='db-progress-track'>
+                            <div className='db-progress-fill' style={{ width: `${pct}%` }} />
+                          </div>
+                          <span className='db-progress-label'>
+                            {done}/{total} STEPS · {pct}%
+                          </span>
+                        </div>
+                      )}
+
+                      <div className='db-roadmap-footer'>
+                        {total > 0 && (
+                          <button
+                              type='button'
+                              className='db-steps-toggle'
+                              onClick={() => toggleStepsOpen(folder.FolderName)}
+                          >
+                            {stepsOpen ? 'HIDE STEPS ▲' : 'STEPS ▾'}
+                          </button>
+                        )}
+                        <a
+                            href={folder.Files[0].Link}
+                            className='db-cardlink'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                        >
+                          VIEW ROADMAP →
+                        </a>
+                      </div>
+
+                      <AnimatePresence initial={false}>
+                        {stepsOpen && total > 0 && (
+                          <motion.div
+                              className='db-steps-wrap'
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                          >
+                            <ul className='db-steps-list'>
+                              {steps.map((step, stepIndex) => {
+                                const isDone = !!(progress[folder.FolderName] || [])[stepIndex];
+                                return (
+                                  <li key={stepIndex}>
+                                    <button
+                                        type='button'
+                                        className={`db-step ${isDone ? 'is-done' : ''}`}
+                                        onClick={() => toggleStep(folder.FolderName, stepIndex, total)}
+                                    >
+                                      <span className='db-step-box'>{isDone ? '×' : ''}</span>
+                                      <span className='db-step-text'>{step}</span>
+                                    </button>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </TiltPanel>
                 </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
         {/* END ROADMAP SECTION */}
