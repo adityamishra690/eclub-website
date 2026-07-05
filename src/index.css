@@ -104,6 +104,12 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Site-wide dark backdrop. This used to work by accident — Projects.css had
+     an unscoped `body { background: #000 }` that leaked globally since all
+     CSS in this app bundles into one stylesheet. Pages like Gallery,
+     Leaderboard, and Team never set their own page-wide background and were
+     silently depending on that leak. Setting it here, intentionally, once. */
+  background: var(--bg-0);
 }
 
 code {
